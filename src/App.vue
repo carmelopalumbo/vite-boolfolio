@@ -1,9 +1,13 @@
 <script>
 
 import axios from "axios";
+import ProjectCard from "./components/ProjectCard.vue";
 
 export default {
   name: "App",
+  components: {
+    ProjectCard
+  },
 
   data(){
     return{
@@ -29,12 +33,15 @@ export default {
 </script>
 
 <template>
-  <h1>TEST API</h1>
-  <div v-for="project in projects" :key="project.id">
-   <p>{{ project.name }}</p>
+  <h1 class="text-center fw-bold py-4">TEST API</h1>
+  <div class="container d-flex flex-wrap justify-content-between">
+    <div v-for="project in projects" :key="project.id">
+      <ProjectCard :project="project"/>
+    </div>
   </div>
+  
 </template>
 
-<style>
-
+<style lang="scss">
+@use "styles/app.scss";
 </style>
