@@ -52,8 +52,11 @@ export default {
       </div>
     </div>
     <div class="d-flex justify-content-center py-4">
-      <button :disabled="pagination.currentPage === 1" @click="getApi(--pagination.currentPage)" class="btn btn-warning mx-2">PREVIOUS</button>
+      <button :disabled="pagination.currentPage === 1" @click="getApi(1)" class="btn btn-dark me-2">FIRST</button>
+      <button :disabled="pagination.currentPage === 1" @click="getApi(--pagination.currentPage)" class="btn btn-warning">PREVIOUS</button>
+      <button :disabled="pagination.currentPage === item" @click="getApi(item)" class="mx-2 btn btn-info" v-for="item in pagination.lastPage" :key="item">{{ item }}</button>
       <button :disabled="pagination.currentPage === pagination.lastPage" @click="getApi(++pagination.currentPage)" class="btn btn-success">NEXT</button>
+      <button :disabled="pagination.currentPage === pagination.lastPage" @click="getApi(pagination.lastPage)" class="btn btn-dark ms-2">LAST</button>
     </div>
   </div>
   
